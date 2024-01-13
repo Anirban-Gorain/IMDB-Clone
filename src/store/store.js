@@ -5,6 +5,6 @@ export const store = configureStore(
 {
   reducer:
   {
-    Home: homeSlice,
+    home: homeSlice,
   },
 })

@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-import { fetchDataFromApi } from "./utils/api";
+import { fetchAPI } from "./customHooks/customHooks";
 import { useDispatch, useSelector } from "react-redux";
 import { getAPIConfiguration } from "./store/homeSlice";
-
-// Components
+import { RouterProvider, createRoutesFromElements, createBrowserRouter, Route } from "react-router-dom";
 
 import { Header } from "./components/header/Header";
 import { Footer } from "./components/footer/Footer";
@@ -13,36 +12,28 @@ import { Explore } from "./pages/explore/Explore";
 import { Home } from "./pages/home/Home";
 import { SearchResult } from "./pages/searchResult/SearchResult";
 
+const route = createBrowserRouter(
+	createRoutesFromElements(
+		<>
+			<Route path="/" element={<Home/>} />
+			<Route path="/:mediaType/:id" element={<Details/>} />
+			<Route path="/search/:query" element={<SearchResult/>} />
+			<Route path="/explore/:mediaType" element={<Explore/>} />
+			<Route path="*" element={<PageNotFound/>} />
+		</>
+	)
+);
+
 function App()
 {
-  const dispatch = useDispatch();
+	return (
+		<>
+		<Header/>
+			<RouterProvider router={route} />
+		<Footer/>
+		</>
+	)
 
-  useEffect(() =>
-  {
-    APITest();
-  }, []);
-
-  const APITest = () =>
-  {
-    try
-     {
-
-      const response = fetchDataFromApi("/movie/popular");
-      response.then((res) => dispatch(getAPIConfiguration(res)));
-
-    } 
-    catch (error)
-    {
-
-      console.log(error);
-
-    }
-  };
-
-  return
-  <>
-
-  </>;
 }
 
 export default App;
