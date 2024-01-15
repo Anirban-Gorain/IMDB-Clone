@@ -15,6 +15,24 @@ import { SearchResult } from "./pages/searchResult/SearchResult";
 
 function App()
 {
+	const dispatch = useDispatch();
+
+	// Storing the image configuration
+
+	(()=>
+	{
+		const result = fetchAPI("/configuration");
+
+		const url = 
+		{
+			backdrop: result?.result?.images?.secure_base_url + "original",
+			poster: result?.result?.images?.secure_base_url + "original",
+			profile: result?.result?.images?.secure_base_url + "original",
+		}
+
+		dispatch(getAPIConfiguration(url));
+	})();
+	
 	return (
 		<>
 			<BrowserRouter>
