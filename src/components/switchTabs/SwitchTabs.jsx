@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import "./style.scss";
 
-export const SwitchTabs = ({useSwitchVal, options}) => 
+export const SwitchTabs = ({sendToParent, options}) => 
 {
     const [activeTab, setActiveTab] = useState(0)
 
@@ -17,8 +17,8 @@ export const SwitchTabs = ({useSwitchVal, options}) =>
                             className="tab-item"
                             onClick={() => 
                                 {
-                                    setActiveTab(100*ind)
-                                    useSwitchVal(tab.toLowerCase())
+                                    sendToParent(100*ind)
+                                    sendToParent(tab.toLowerCase())
                                 }}
                         >{tab}</span>
                     );
