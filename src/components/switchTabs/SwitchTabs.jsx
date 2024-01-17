@@ -4,6 +4,7 @@ import "./style.scss";
 export const SwitchTabs = ({sendToParent, options}) => 
 {
     const [activeTab, setActiveTab] = useState(0)
+    console.log(activeTab);
 
     return (
         <div className="switch-tabs">
@@ -17,7 +18,7 @@ export const SwitchTabs = ({sendToParent, options}) =>
                             className="tab-item"
                             onClick={() => 
                                 {
-                                    sendToParent(100*ind)
+                                    setActiveTab(100*ind)
                                     sendToParent(tab.toLowerCase())
                                 }}
                         >{tab}</span>
