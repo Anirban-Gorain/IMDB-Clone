@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchAPI } from "./customHooks/customHooks";
 import { useDispatch, useSelector } from "react-redux";
-import { getAPIConfiguration } from "./store/homeSlice";
+import { getAPIConfiguration, getGenres } from "./store/homeSlice";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { Header } from "./components/header/Header";
@@ -31,6 +31,28 @@ function App()
 		}
 
 		dispatch(getAPIConfiguration(url));
+	})();
+
+	// Storing the genres id and val pair
+
+	(()=>
+	{
+		const resultGenresMovie = fetchAPI("/genre/movie/list");
+		const resultGenresTV = fetchAPI("/genre/tv/list");
+
+		if(!resultGenresMovie.isLoading && !resultGenresTV.isLoading)
+		{
+			const allGenres = [...resultGenresMovie?.result?.genres, ...resultGenresTV?.result?.genres];
+			const genresIdValuePair = {};
+			
+			allGenres.forEach((elem) => 
+			{
+				genresIdValuePair[elem.id] = elem.name;
+			});
+
+			dispatch(getGenres(genresIdValuePair));
+		}
+
 	})();
 	
 	return (
