@@ -4,7 +4,6 @@ import "./style.scss";
 export const SwitchTabs = ({sendToParent, options}) => 
 {
     const [activeTab, setActiveTab] = useState(0)
-    console.log(activeTab);
 
     return (
         <div className="switch-tabs">
