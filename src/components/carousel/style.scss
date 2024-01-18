@@ -1,0 +1,109 @@
+@import "../../mixins.scss";
+
+.carousel
+{
+    margin: 50px 0;
+    position: relative;
+    display: flex;
+    min-height: 300px;
+    // max-height: 400px;
+    justify-content: space-between;
+    align-items: center;
+    .arrow
+    {
+        z-index: 1;
+        font-size: 40px;
+        bottom: 22px;
+        position: relative;
+        cursor: pointer;
+        background: var(--gradient);
+        border-radius: 50%;
+        visibility: hidden;
+        @include md
+        {
+            visibility: visible;
+        }
+    }
+    .left
+    {
+        left: 20px;
+    }
+    .right
+    {
+        right: 20px;
+    }
+    .carousel-items
+    {
+        scroll-behavior: smooth;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        gap: 10px;
+        overflow-y: hidden;
+        .carousel-item
+        {
+            flex-shrink: 0;
+            width: 155px;
+            height: 300px;
+            .poster
+            {
+                width: 100%;
+                height: 230px;
+                cursor: pointer;
+                position: relative;
+                .genres-container
+                {
+                    margin-left: 5px;
+                    margin-top: 5px;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    z-index: 1;
+                }
+                .lazy-load-image-background
+                {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    img 
+                    {
+                        border-radius: 5px;
+                        width: 100%;
+                        height: 100%;
+                        // object-fit: cover;
+                        // object-position: center;
+                    }
+                }
+            }
+            .details
+            {
+                margin-top: 30px;
+                width: 100%;
+                height: 50px;
+                color: #fff;
+                .text
+                {
+                    @include ellipsis(1);
+                    margin-top: 5px;
+                    text-align: center;
+                    font-size: 16px;
+                    height: calc(50% - 8px);
+                }
+                .date
+                {
+                    width: 100%;
+                    margin-top: 5px;
+                    text-align: center;
+                    font-size: 14px;
+                    opacity: 0.5;
+                    height: calc(50% - 8px);
+                }
+            }
+        }
+    }
+}
