@@ -15,6 +15,7 @@ import "../../index.scss";
 
 export const Carousel = ({results, isLoading, category}) => 
 {
+  console.log(isLoading);
   const {url, genres} = useSelector((state) => state.home);
   const carousalItemsContainer = useRef();
   const navigate = useNavigate();
@@ -74,7 +75,7 @@ export const Carousel = ({results, isLoading, category}) =>
                         </div>
                         <div className="details">
                           <div className="text">{result?.name || result?.title}</div>
-                          <div className="date">{result?.first_air_date || result?.release_data}</div>
+                          <div className="date">{dayjs(result.release_date || result.first_air_date).format("MMM D, YYYY")}</div>
                         </div>
                       </div>
                     )
