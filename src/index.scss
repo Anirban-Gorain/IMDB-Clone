@@ -1,4 +1,7 @@
-:root {
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+:root 
+{
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1;
@@ -20,33 +23,38 @@
   --gradient: linear-gradient(98.37deg, #f89e00 0.99%, #da2f68 100%);
 }
 
-* {
+* 
+{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
+body 
+{
   background-color: var(--black);
 }
 
-::-webkit-scrollbar {
+::-webkit-scrollbar 
+{
   display: none;
 }
 
-.skeleton {
+.skeleton 
+{
   position: relative;
   overflow: hidden;
   background-color: #0a2955;
 
-  &::after {
+  &::after 
+  {
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     transform: translateX(-100%);
-    background-image: linear-gradient(90deg,
+    background-image: linear-gradient(180deg,
         rgba(#193763, 0) 0,
         rgba(#193763, 0.2) 20%,
         rgba(#193763, 0.5) 60%,
@@ -55,8 +63,10 @@ body {
     content: "";
   }
 
-  @keyframes shimmer {
-    100% {
+  @keyframes shimmer 
+  {
+    100% 
+    {
       transform: translateX(100%);
     }
   }
