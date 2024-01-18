@@ -1,0 +1,35 @@
+@import "../../../mixins.scss";
+
+.carousel-section
+{
+    .wrapper
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        @include md
+        {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .carousel-heading
+        {
+            font-size: 24px;
+            color: white;
+            font-weight: normal;
+        }
+        .wrap-filters
+        {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            align-items: center;
+            @include md
+            {
+                align-items: flex-start;
+            }
+        }
+    }
+}
