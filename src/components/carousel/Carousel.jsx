@@ -13,9 +13,8 @@ import "./style.scss";
 import "../../index.scss";
 
 
-export const Carousel = ({results, isLoading}) => 
+export const Carousel = ({results, isLoading, category}) => 
 {
-  console.log(results);
   const {url, genres} = useSelector((state) => state.home);
   const carousalItemsContainer = useRef();
   const navigate = useNavigate();
@@ -35,43 +34,6 @@ export const Carousel = ({results, isLoading}) =>
     )
   }
 
-  const getPosterUrl = (media_type, result) =>
-  {
-    if(result?.profile_path===null || result?.poster_path===null)
-      return noPosterPlaceHolder;
-
-    if(media_type==="person")
-      return url?.profile + result?.profile_path;
-    else
-      return url?.profile + result?.poster_path;
-  }
-
-  const getTitleText = (media_type, result) =>
-  {
-    let tempStore;
-
-    if(media_type==="person" || media_type==="tv")
-      tempStore = result?.name;
-    else if(media_type==="movie")
-      tempStore = result?.title;
-
-    return tempStore.charAt(0).toUpperCase() + tempStore.slice(1);
-  }
-
-  const getReleaseDate = (media_type, result) =>
-  {
-      let date;
-
-      if(media_type === "person")
-        return ""
-      else if(media_type === "tv")
-        date = result?.first_air_date;
-      else if(media_type === "movie")
-        date = result?.release_date;
-
-      return dayjs(date).format("MMM DD, YYYY");
-  }
-
   const handleSlider = useCallback((dir) => {
     const slideAmount = dir === "right" ? (carousalItemsContainer.current.scrollLeft + carousalItemsContainer.current.offsetWidth - 50) : (carousalItemsContainer.current.scrollLeft - carousalItemsContainer.current.offsetWidth -50);
     carousalItemsContainer.current.scrollTo({ left: slideAmount, behavior: "smooth" });
@@ -82,7 +44,6 @@ export const Carousel = ({results, isLoading}) =>
     carousalItemsContainer.current.scrollTo({left: 0, behavior: "instant"})
   }, [isLoading])
   
-
   return (
     <div className="carousel">
       <CiCircleChevLeft className="arrow left" 
@@ -102,18 +63,18 @@ export const Carousel = ({results, isLoading}) =>
                       <div key={index} className="carousel-item">
                         <div 
                           className="poster"
-                          onClick={() => {navigate(`/${result.media_type}/${result.id}`); console.log("Ya");}}
+                          onClick={() => {navigate(`/${result.media_type || category}/${result.id}`); console.log("Ya");}}
                         >
                             <Genres genresIds={result?.genre_ids.slice(0, 3)}/>
                             <CircleRating rating={result?.vote_average}/>
                             <LazyLoadImage
-                              src={getPosterUrl(result?.media_type, result)}
+                              src={url?.profile + result?.poster_path}
                               effect="blur"
                             />
                         </div>
                         <div className="details">
-                          <div className="text">{getTitleText(result?.media_type, result)}</div>
-                          <div className="date">{getReleaseDate(result?.media_type, result)}</div>
+                          <div className="text">{result?.name || result?.title}</div>
+                          <div className="date">{result?.first_air_date || result?.release_data}</div>
                         </div>
                       </div>
                     )
