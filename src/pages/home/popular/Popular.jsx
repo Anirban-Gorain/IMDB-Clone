@@ -9,7 +9,6 @@ export const Popular = () =>
 {
     const [category, useCategory] = useState("tv");
     const {result, isLoading} = fetchAPI(`/${category}/popular`);
-    console.log(result);
 
     return (
         <div className="carousel-section">
