@@ -54,6 +54,13 @@
                 height: 230px;
                 cursor: pointer;
                 position: relative;
+                .circle-rating
+                {
+                    position: absolute;
+                    left: 10px;
+                    bottom: -25px;
+                    z-index: 1;
+                }
                 .genres-container
                 {
                     margin-left: 5px;
