@@ -15,7 +15,6 @@ import "../../index.scss";
 
 export const Carousel = ({results, isLoading, category}) => 
 {
-  console.log(isLoading);
   const {url, genres} = useSelector((state) => state.home);
   const carousalItemsContainer = useRef();
   const navigate = useNavigate();
@@ -64,7 +63,7 @@ export const Carousel = ({results, isLoading, category}) =>
                       <div key={index} className="carousel-item">
                         <div 
                           className="poster"
-                          onClick={() => {navigate(`/${result.media_type || category}/${result.id}`); console.log("Ya");}}
+                          onClick={() => {navigate(`/${result.media_type || category}/${result.id}`);}}
                         >
                             <Genres genresIds={result?.genre_ids.slice(0, 3)}/>
                             <CircleRating rating={result?.vote_average}/>
