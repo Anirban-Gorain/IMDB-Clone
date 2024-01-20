@@ -2,10 +2,12 @@ import "./style.scss";
 
 import React from 'react'
 
-export const PlayButton = () => 
+export const PlayButton = ({eventHandler}) => 
 {
   return (
-    <div class="video-play-button">
+    <div className="video-play-button"
+      onClick={eventHandler}
+    >
         <span></span>
     </div>
   )
