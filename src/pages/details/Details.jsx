@@ -1,8 +1,32 @@
 import React from 'react'
+import 'react-lazy-load-image-component/src/effects/blur.css';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { Wrapper } from "../../components/wrapper/Wrapper";
+import { DetailsBanner } from "./detailsBanner/DetailsBanner";
+import { useParams } from "react-router-dom"; 
+import { fetchAPI } from "../../customHooks/customHooks";
+
+import "./style.scss";
 
 export const Details = () =>
 {
-  return (
-    <div>Details</div>
-  )
+	const {mediaType, id} = useParams();
+	const {result, isLoading} = fetchAPI(`/${mediaType}/${id}`);
+	const {result: crewResult, isLoading: isLoadingCrew} = fetchAPI(`/${mediaType}/${id}/credits`);
+	const {result: videoResult, isLoading: isLoadingResult} = fetchAPI(`/${mediaType}/${id}/videos`);
+	
+	// Filtering all the YT videos
+
+	const ytVideos = videoResult?.results?.filter((val) => val.site === "YouTube");
+
+	console.log(ytVideos, videoResult);
+
+	return (
+		<DetailsBanner 
+			isLoading={(isLoading || isLoadingCrew || isLoadingResult)} 
+			result={result}  
+			crewResult={crewResult}
+			videoResult={ytVideos}
+		/>
+	)
 }

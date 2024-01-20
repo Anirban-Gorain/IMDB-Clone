@@ -1,0 +1,49 @@
+.video-overlay
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.377);
+    z-index: 5;
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &.hide
+    {
+        display: none;
+    }
+    &.show
+    {
+        display: flex;
+    }
+    .container
+    {
+        width: 100%;
+        max-width: 700px;
+        position: relative;
+        .player
+        {
+            width: 100% !important;
+            margin-top: 45px;
+        }
+        .close-btn
+        {
+            display: block;
+            position: absolute;
+            right: 0;
+            top: 0;
+            cursor: pointer;
+            font-size: 40px;
+            border: 1px solid white;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-bottom: 5px;
+        }
+    }
+}
