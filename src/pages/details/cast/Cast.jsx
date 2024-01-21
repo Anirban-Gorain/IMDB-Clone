@@ -41,63 +41,65 @@ export const Cast = ({casts, isLoading}) =>
   }, [isLoading])
   
   return (
-      <Wrapper>
+      <div className="cast-container">
+        <Wrapper>
           <span className="cast-heading">
               Top-Rated
           </span>
-      
-      <div className="cast">
-        <CiCircleChevLeft className="arrow left" 
-          onClick={() => handleSlider("left")}
-        />
-        <CiCircleChevRight className="arrow right" 
-          onClick={() => handleSlider("right")}
-        />
-        <div 
-          className="cast-items"
-          ref={castItemsContainer}
-        >
-          {
-            !isLoading ? (
-                  casts?.map((result, index) => {
-                      const profileSrc = (result.profile_path) ? url?.profile + result?.profile_path : fallbackProfileImg;
-                      return (
-                        <div key={index} className="cast-item">
-                          <div 
-                            className="profile"
-                          >
-                              <LazyLoadImage
-                                src={profileSrc}
-                                effect="blur"
-                              />
-                          </div>
-                          <div className="details">
-                            <div className="cast-name">{result?.character || result?.name}</div>
-                            <div className="original-name">{result?.original_name}</div>
-                          </div>
-                        </div>
-                      )
-                  })
-              ) : (
-                <>
-                  {castSkeleton()}
-                  {castSkeleton()}
-                  {castSkeleton()}
-                  {castSkeleton()}
-                  {castSkeleton()}
-                  {castSkeleton()}
-                  {castSkeleton()}
-                  {castSkeleton()}
-                  {castSkeleton()}
-                  {castSkeleton()}
-                  {castSkeleton()}
-                  {castSkeleton()}
-                  {castSkeleton()}
-                </>
-              )
-          }
-        </div>
+        
+          <div className="cast">
+            <CiCircleChevLeft className="arrow left" 
+              onClick={() => handleSlider("left")}
+            />
+            <CiCircleChevRight className="arrow right" 
+              onClick={() => handleSlider("right")}
+            />
+            <div 
+              className="cast-items"
+              ref={castItemsContainer}
+            >
+              {
+                !isLoading ? (
+                      casts?.map((result, index) => {
+                          const profileSrc = (result.profile_path) ? url?.profile + result?.profile_path : fallbackProfileImg;
+                          return (
+                            <div key={index} className="cast-item">
+                              <div 
+                                className="profile"
+                              >
+                                  <LazyLoadImage
+                                    src={profileSrc}
+                                    effect="blur"
+                                  />
+                              </div>
+                              <div className="details">
+                                <div className="cast-name">{result?.character || result?.name}</div>
+                                <div className="original-name">{result?.original_name}</div>
+                              </div>
+                            </div>
+                          )
+                      })
+                  ) : (
+                    <>
+                      {castSkeleton()}
+                      {castSkeleton()}
+                      {castSkeleton()}
+                      {castSkeleton()}
+                      {castSkeleton()}
+                      {castSkeleton()}
+                      {castSkeleton()}
+                      {castSkeleton()}
+                      {castSkeleton()}
+                      {castSkeleton()}
+                      {castSkeleton()}
+                      {castSkeleton()}
+                      {castSkeleton()}
+                    </>
+                  )
+              }
+            </div>
+          </div>
+        </Wrapper>
       </div>
-      </Wrapper>
   )
 }
