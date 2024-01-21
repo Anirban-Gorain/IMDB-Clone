@@ -1,0 +1,86 @@
+@import "../../../mixins.scss"; 
+
+.official-videos-container
+{
+    margin: 50px 0;
+    .wrapper
+    {
+        .official-video-heading
+        {
+            font-size: 24px;
+            color: white;
+            font-weight: normal;
+            margin-bottom: 50px;
+            display: inline-block;
+        }
+        .videos
+        {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-y: hidden;
+            overflow-x: auto;
+            gap: 15px;
+            .video-content
+            {
+                flex-shrink: 0;
+                overflow: hidden;
+                .video-thumbnail-container
+                {
+                    width: 300px;
+                    height: 160px;
+                    .thumbnail
+                    {
+                        cursor: pointer;
+                        position: relative;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 100%;
+                        height: 100%;
+                        .lazy-load-image-background
+                        {
+                            top: 0;
+                            left: 0;
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            object-position: center;
+                            
+                            img
+                            { 
+                                border-radius: 15px;
+                                width: 100%;
+                                height: 100%;
+                                transition: .2s;
+                                &:hover
+                                {
+                                    filter: brightness(70%);
+                                }
+                            }
+                        }
+                        .video-play-button
+                        {
+                            &:before
+                            {
+                                background: none;
+                                animation: none;
+                                transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+                            }
+                        }
+                    }
+                }
+                .title
+                {
+                    display: inline-block;
+                    font-weight: 300;
+                    margin: 10px 0;
+                    color: white;
+                    height: auto;
+                    width: 300px;
+                    @include ellipsis(1);
+                }
+            }
+        }
+    }
+}

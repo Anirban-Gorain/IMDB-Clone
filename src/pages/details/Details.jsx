@@ -7,6 +7,7 @@ import { Cast } from "./cast/Cast";
 import { useParams } from "react-router-dom"; 
 import { fetchAPI } from "../../customHooks/customHooks";
 import { VideoPlayer } from "../../components/videoPlayer/VideoPlayer.jsx";
+import { OfficialVideos } from "./officialVideos/OfficialVideos";
 
 
 import "./style.scss";
@@ -40,6 +41,14 @@ export const Details = () =>
 				/>
 			}
 			<Cast isLoading={(isLoadingCrew)} casts={workers?.cast}/>
+			{
+				ytVideos?.length>0 && <OfficialVideos 
+					isLoadingVideoResult={isLoadingVideoResult}
+					videoResults={ytVideos}
+					setVideoId={setVideoId}
+					setShow={setShow}
+				/>
+			}
 		</>
 	)
 }
