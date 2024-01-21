@@ -20,7 +20,9 @@ export const Details = () =>
 	const {result: videoResult, isLoading: isLoadingVideoResult} = fetchAPI(`/${mediaType}/${id}/videos`);
 	const [show, setShow] = useState(false);
 	const [videoId, setVideoId] = useState(null);
-	
+
+	// console.log(isLoading, isLoadingCrew, isLoadingVideoResult);
+
 	// Filtering all the YT videos
 
 	const ytVideos = videoResult?.results?.filter((val) => val.site === "YouTube");
@@ -31,18 +33,18 @@ export const Details = () =>
 				ytVideos?.length>0 && <VideoPlayer setShow={setShow} show={show} videoId={videoId}/>
 			}
 			{
-				ytVideos?.length>0 && <DetailsBanner 
+				<DetailsBanner 
 				isLoading={(isLoading || isLoadingCrew || isLoadingVideoResult)} 
 				result={result}  
 				crewResult={workers}
-				videoId={ytVideos[0]?.key}
+				videoId={ytVideos?.[0]?.key}
 				setVideoId={setVideoId}
 				setShow={setShow}
 				/>
 			}
 			<Cast isLoading={(isLoadingCrew)} casts={workers?.cast}/>
 			{
-				ytVideos?.length>0 && <OfficialVideos 
+				<OfficialVideos 
 					isLoadingVideoResult={isLoadingVideoResult}
 					videoResults={ytVideos}
 					setVideoId={setVideoId}
