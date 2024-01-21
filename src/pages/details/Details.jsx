@@ -9,6 +9,7 @@ import { fetchAPI } from "../../customHooks/customHooks";
 import { VideoPlayer } from "../../components/videoPlayer/VideoPlayer.jsx";
 import { OfficialVideos } from "./officialVideos/OfficialVideos";
 import { RecommendedMovies } from "./recommendedMovies/RecommendedMovies";
+import { SimilarMovies } from "./similarMovies/SimilarMovies";
 
 
 import "./style.scss";
@@ -52,6 +53,7 @@ export const Details = () =>
 					setShow={setShow}
 				/>
 			}
+			<SimilarMovies id={id} category={mediaType}/>
 			<RecommendedMovies id={id} category={mediaType}/>
 		</>
 	)
