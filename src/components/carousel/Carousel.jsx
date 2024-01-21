@@ -68,7 +68,7 @@ export const Carousel = ({results, isLoading, category}) =>
                             <Genres genresIds={result?.genre_ids.slice(0, 3)}/>
                             <CircleRating rating={result?.vote_average}/>
                             <LazyLoadImage
-                              src={url?.profile + result?.poster_path}
+                              src={url?.poster + result?.poster_path}
                               effect="blur"
                             />
                         </div>
