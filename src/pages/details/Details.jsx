@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import { fetchAPI } from "../../customHooks/customHooks";
 import { VideoPlayer } from "../../components/videoPlayer/VideoPlayer.jsx";
 import { OfficialVideos } from "./officialVideos/OfficialVideos";
+import { RecommendedMovies } from "./recommendedMovies/RecommendedMovies";
 
 
 import "./style.scss";
@@ -51,6 +52,7 @@ export const Details = () =>
 					setShow={setShow}
 				/>
 			}
+			<RecommendedMovies id={id} category={mediaType}/>
 		</>
 	)
 }
