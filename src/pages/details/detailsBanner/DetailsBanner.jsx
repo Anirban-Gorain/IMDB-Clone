@@ -6,19 +6,17 @@ import { Wrapper } from "../../../components/wrapper/Wrapper";
 import { Genres } from "../../../components/genres/Genres";
 import { PlayButton } from "../../../components/playButton/PlayButton";
 import { CircleRating } from "../../../components/circleRating/CircleRating";
-import { VideoPlayer } from "../../../components/videoPlayer/VideoPlayer.jsx";
+
 import dayjs from "dayjs";
 import "../../../index.scss";
 
 import "./style.scss";
 
-export const DetailsBanner = ({isLoading, result, crewResult, videoResult}) => 
+export const DetailsBanner = ({isLoading, result, crewResult, videoId, setVideoId, setShow}) => 
 {
     const {url} = useSelector((state) => state.home);
     const genres = result?.genres.map((data) => data.id);
     const [showVideo, setShowVideo] = useState(false);
-    const [videoId, setVideoId] = useState(null);
-    const [show, setShow] = useState(false);
 
     // console.log(videoResult?.length);
 
@@ -35,9 +33,6 @@ export const DetailsBanner = ({isLoading, result, crewResult, videoResult}) =>
     return (
         !isLoading ? (
             <div className="detail-banner">
-                {
-                    videoResult?.length>0 && <VideoPlayer setShow={setShow} show={show} videoId={videoResult[0].key}/>
-                }
                     <div className="detail-banner-backdrop-img">
                         <LazyLoadImage
                             src={url?.poster + result?.backdrop_path}
@@ -70,7 +65,14 @@ export const DetailsBanner = ({isLoading, result, crewResult, videoResult}) =>
                                 <div className="row rating-trailer">
                                     <CircleRating rating={result?.vote_average}/>
                                     <PlayButton 
-                                        eventHandler={() => setShow(true)}
+                                        eventHandler=
+                                        {
+                                            ()=>
+                                            {
+                                                setShow(true);
+                                                setVideoId(videoId);
+                                            }
+                                        }
                                     />
 
                                     

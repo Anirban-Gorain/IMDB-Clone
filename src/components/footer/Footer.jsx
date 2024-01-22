@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FaFacebookF, FaInstagram, FaTwitter,FaLinkedin } from "react-icons/fa";
 import { Wrapper } from "../wrapper/Wrapper";
 import "./style.scss";
@@ -8,29 +9,26 @@ export const Footer = () =>
     return (
         <footer className="footer">
             <Wrapper>
-                <ul className="menu-items">
-                    <li className="menuItem">Terms Of Use</li>
-                    <li className="menuItem">Privacy-Policy</li>
-                    <li className="menuItem">About</li>
-                    <li className="menuItem">Blog</li>
-                    <li className="menuItem">FAQ</li>
-                </ul>
                 <div className="info-text">
-                All content included on this site in or made available through any TMDb Service, such as text, graphics, logos, button icons, images, audio clips, video clips, digital downloads, data compilations, and software, is the property of IMDb or its content suppliers and protected by United States and international copyright laws.
+                Hey 🙂, I am Anirban Gorain , a Frontend Developer 👨‍💻 skilled in HTML, CSS, JavaScript, React, and SCSS. Strong 💪 background in Data Structures and Algorithms and CS fundamentals. Eager to explore new technologies and create impactful solutions. Let's innovate together, 🙏.
                 </div>
                 <div className="social-icons">
-                    <span className="icon">
-                        <FaFacebookF />
-                    </span>
-                    <span className="icon">
-                        <FaInstagram />
-                    </span>
-                    <span className="icon">
-                        <FaTwitter />
-                    </span>
-                    <span className="icon">
-                        <FaLinkedin />
-                    </span>
+                    <Link to="https://www.linkedin.com/in/anirban-gorain-2bb20419b/" target="_blank" className="icon-link">
+                        <span className="icon">
+                            <FaLinkedin />
+                        </span>
+                    </Link>
+                    {/* <Link to="https://www.facebook.com/anirban.gorain.73/" className="icon-link">
+                        <span className="icon">
+                            <FaTwitter />
+                        </span>
+                    </Link> */}
+                    <Link to="https://www.facebook.com/anirban.gorain.73/" target="_blank" className="icon-link">
+                        <span className="icon">
+                            <FaFacebookF />
+                        </span>
+                    </Link>
+
                 </div>
             </Wrapper>
         </footer>
