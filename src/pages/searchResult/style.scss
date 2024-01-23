@@ -1,0 +1,43 @@
+.search-res-container
+{
+    padding: 100px 0;
+    .search-res-heading
+    {
+        display: inline-block;
+        margin-bottom: 60px;
+        font-size: 24px;
+        color: white;
+        font-weight: normal;
+    }
+    .search-results-items
+    {
+        display: flex;
+        gap: 15px;
+        height: auto;
+        flex-wrap: wrap;
+        margin-bottom: 50px;
+        .infinite-scroll-component
+        {
+            display: flex;
+            gap: 15px;
+            height: auto;
+            flex-wrap: wrap;
+        }
+        .not-found
+        {
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50vh;
+            width: 100%;
+            .not-found-icon
+            {
+                display: block;
+                text-align: center;
+                color: white;
+                font-size: 100px;
+            }
+        }
+    }
+}
