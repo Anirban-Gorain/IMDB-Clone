@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { fetchDataFromApi } from "../../utils/api";
 import { Wrapper } from "../../components/wrapper/Wrapper";
 import { MovieCard } from "../../components/movieCard/MovieCard";
+import { LoadingCircle } from "../../components/loadingCircle/LoadingCircle.jsx";
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { FaRobot } from "react-icons/fa6";
 import "./style.scss";
@@ -74,11 +75,11 @@ export const SearchResult = () =>
 				<div className="search-results-items">
 					{
 						movieResults?.length != 0 ? (
-							movieResults && <InfiniteScroll
-								dataLength={movieResults?.length}
+							<InfiniteScroll
+								dataLength={movieResults?.length || []}
 								next={nextMovieResults}
 								hasMore={movieResults?.length!=totalRes}
-								loader={<h4>Loading...</h4>}
+								loader={<LoadingCircle />}
 							>
 							{
 								movieResults?.map((result, ind) => 
