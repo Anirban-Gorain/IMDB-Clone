@@ -22,7 +22,7 @@ export const OfficialVideos = ({videoResults, setVideoId, setShow, isLoadingVide
     }
 
     return (
-        (videoResults.length > 0) && <div className="official-videos-container">
+        (videoResults?.length > 0) && <div className="official-videos-container">
             <Wrapper>
                 <span className="official-video-heading">Official videos</span>
                 <div className="videos">
