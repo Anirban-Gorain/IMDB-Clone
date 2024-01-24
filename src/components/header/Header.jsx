@@ -70,7 +70,7 @@ export const Header = () =>
             onClick={()=>navigate("/explore/movies")}
           >Movies</li>
           <li className="menu-item"
-            onClick={()=>navigate("/explore/tv-shows")}
+            onClick={()=>navigate("/explore/tv")}
           >TV-shows</li>
           <li className="menu-item">
             <HiMagnifyingGlass 
