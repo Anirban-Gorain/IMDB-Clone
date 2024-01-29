@@ -10,7 +10,7 @@
     display: flex;
     align-items: center;
     transition: all ease 0.5s;
-    z-index: 2;
+    z-index: 8;
     &.top 
     {
         background: rgba(0, 0, 0, 0.25);
@@ -19,7 +19,7 @@
     }
     &.show 
     {
-        background-color: var(--black3);
+        background-color: var(--black);
     }
     &.hide 
     {
@@ -57,7 +57,7 @@
             display: flex;
             align-items: center;
             margin: 0 15px;
-            color: white;
+            color: var(--white);
             font-weight: 500;
             position: relative;
             cursor: pointer;
@@ -70,7 +70,7 @@
             }
             &:hover 
             {
-                color: var(--pink);
+                color: var(--blue);
             }
         }
     }
