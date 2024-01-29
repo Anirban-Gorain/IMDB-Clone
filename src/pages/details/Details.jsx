@@ -44,7 +44,7 @@ export const Details = () =>
 				setShow={setShow}
 				/>
 			}
-			<Cast isLoading={(isLoadingCrew)} casts={workers?.cast}/>
+			{workers?.cast.length > 0 && <Cast isLoading={(isLoadingCrew)} casts={workers?.cast}/>}
 			{
 				<OfficialVideos 
 					isLoadingVideoResult={isLoadingVideoResult}
