@@ -41,12 +41,12 @@ export const Explore = () =>
 	const genresOptions = Object.values(genres).map((elem) => {return {value: elem.toLowerCase(), label: elem}});
 
 	
-	console.log(exploreResults);
 	
 	useEffect(() => {
 		setExploreResults([]);
 		const constructURL = `/discover/${mediaType === "movies" ? "movie" : "tv"}?${year === "all" ? "" : (mediaType === "movies" ? "primary_release_year=" : "first_air_date_year=") + year}&sort_by=${popularity}${includeGenres === "all" ? "" : "&with_genres=" + includeGenres}${excludeGenres === "none" ? "" : "&without_genres=" + excludeGenres}&page=${1}`;
 		setUrl(constructURL);
+
 
 		(async () => {
 			try {
@@ -66,7 +66,6 @@ export const Explore = () =>
 		try 
 		{
 			const response = await fetchDataFromApi(url);
-			console.log(response);
 			setPageNumber((prev) => prev+1);
 			setExploreResults((prev) => 
 			{
@@ -81,7 +80,6 @@ export const Explore = () =>
 		}
 	}
 
-	console.log(exploreResults);
 
 	return (
 		<div className="explore-container">
@@ -120,7 +118,7 @@ export const Explore = () =>
 									id="inc-genres"
 									options={[{value:"all", label: "All"}, ...genresOptions]} 
 									defaultValue={[{value:"all", label: "All"}]}
-									onChange={(e) => {setIncludeGenres(e.value); console.log(e);}}
+									onChange={(e) => {setIncludeGenres(e.value);}}
 									className={"filter"}
 								/>
 							</div>	

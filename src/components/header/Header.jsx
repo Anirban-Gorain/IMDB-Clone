@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import "./style.scss";
 import { Wrapper } from "../../components/wrapper/Wrapper";
-import logo from "../../assets/movix-logo.svg"
+import logo from "../../assets/movix-logo.png"
 import {useNavigate} from "react-router-dom";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import { GiHamburgerMenu } from "react-icons/gi";
